@@ -16,11 +16,19 @@ class Manager
      */
     protected $client;
 
+    /**
+     * Manager constructor.
+     * @param \Illuminate\Contracts\Container\Container $app
+     */
     public function __construct(Container $app)
     {
         $this->app = $app;
     }
 
+    /**
+     * @param string|null $name
+     * @return \Elastica\Client
+     */
     public function connection(string $name = null) : Client
     {
         $name = $name ?: $this->getDefaultConnection();
@@ -34,12 +42,12 @@ class Manager
         return $this->client;
     }
 
-    public function getHosts(string $name) : array
+    protected function getHosts(string $name) : array
     {
         return array_get($this->getConfig($name), "hosts");
     }
 
-    public function getConfig(string $name)
+    protected function getConfig(string $name)
     {
         $connections = $this->app["config"]['elastica.connections'];
 

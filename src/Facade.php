@@ -10,6 +10,6 @@ class Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'elasticsearch';
+        return 'elastica';
     }
 }

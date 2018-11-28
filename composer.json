@@ -25,7 +25,7 @@
                 "Xxstop\\LaravelElastica\\ServiceProvider"
             ],
             "aliases": {
-                "Elasticsearch": "Xxstop\\LaravelElastica\\Facade"
+                "Elastica": "Xxstop\\LaravelElastica\\Facade"
             }
         }
     },

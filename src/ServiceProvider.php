@@ -1,7 +1,6 @@
 <?php
 namespace Xxstop\LaravelElastica;
 
-use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
@@ -16,24 +15,19 @@ class ServiceProvider extends BaseServiceProvider
     {
         $app = $this->app;
 
-        $app->singleton('elasticsearch', function($app) {
+        $app->singleton('elastica', function($app) {
             return new Manager($app);
         });
 
-        $app->alias('elasticsearch', Manager::class);
+        $app->alias('elastica', Manager::class);
     }
 
     protected function setUpConfig()
     {
         $source = dirname(__DIR__) . '/config/elastica.php';
 
-        if ($this->app instanceof LaravelApplication) {
-            $this->publishes([$source => config_path('elasticsearch.php')], 'config');
-        } elseif ($this->app instanceof LumenApplication) {
-            $this->app->configure('elasticsearch');
-        }
-
-        $this->mergeConfigFrom($source, 'elasticsearch');
+        $this->publishes([$source => config_path('elastica.php')], 'config');
+        $this->mergeConfigFrom($source, 'elastica');
     }
 
 }
