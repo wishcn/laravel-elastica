@@ -4,6 +4,13 @@ return [
 
     'defaultConnection' => 'default',
 
+    "type"  => "default",
+
+    "prefix" => env(
+        "ELASTICSEARCH_PREFIX",
+        str_slug(env('APP_NAME', 'laravel'), '_').'_elasticsearch'
+    ),
+
     'connections' => [
 
         'default' => [
