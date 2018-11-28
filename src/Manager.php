@@ -2,7 +2,8 @@
 
 namespace Xxstop\LaravelElastica;
 
-use Elastica\Client;
+use \Elastica\Client;
+use \Illuminate\Contracts\Container\Container;
 
 class Manager
 {

@@ -1,8 +1,9 @@
 <?php
-
 namespace Xxstop\LaravelElastica;
 
-class Facade
+use \Illuminate\Support\Facades\Facade as BaseFacade;
+
+class Facade extends BaseFacade
 {
 
     /**
