@@ -1,6 +1,7 @@
 <?php
 namespace Xxstop\LaravelElastica;
 
+use Illuminate\Foundation\Application as LaravelApplication;
 use \Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
@@ -26,7 +27,10 @@ class ServiceProvider extends BaseServiceProvider
     {
         $source = dirname(__DIR__) . '/config/elastica.php';
 
-        $this->publishes([$source => config_path('elastica.php')], 'config');
+        if ($this->app instanceof LaravelApplication) {
+            $this->publishes([$source => config_path('elastica.php')], 'config');
+        }
+
         $this->mergeConfigFrom($source, 'elastica');
     }
 
