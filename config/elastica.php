@@ -8,7 +8,7 @@ return [
 
     "prefix" => env(
         "ELASTICSEARCH_PREFIX",
-        str_slug(env('APP_NAME', 'laravel'), '_').'_elasticsearch'
+        str_slug(str_replace('.', '_', env('APP_NAME', 'laravel')), '_').'_elasticsearch'
     ),
 
     'connections' => [
